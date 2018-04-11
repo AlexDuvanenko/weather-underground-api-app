@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <label for="featureDropDown">Features</label>
+            <select id="featureDropDown">
+                <option value="conditions">Conditions</option>
+                <option value="hourly">Hourly</option>
+                <option value="hourly10day">Hourly (10 Day)</option>
+                <option value="yesterday">Yesterday</option>
+                <option selected="selected" value="forecast">Forecast</option>
+                <option value="forecast10day">Forecast (10 Day)</option>
+            </select> <br />
+            <label for="stateText">State</h3>      
+            <input type="text" name="state" id="stateText" value=""><br />
+            <label for="cityText">City</label>
+            <input type="text" name="city" id="cityText" value=""><br />
+            <button type="button" id="submitBtn">Submit</button>
+        </div>
+        <div id="data">
+            <table id="dataTable">
+                <tr>
+                    <th>Day</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Conditions</th>
+                </tr>
+            </table>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

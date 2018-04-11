@@ -1,0 +1,36 @@
+:root {
+    --blue: #00A9E0;
+    --gray: #dddddd;
+}
+
+#submitBtn {
+    width: 75px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+#submitBtn:hover {
+    transform: scale(1.05);
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 15px;
+    width: 1500px;
+}
+
+td {
+    border: 1px solid black;
+    text-align: left;
+    padding: 5px;
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: var(--gray);
+}
