@@ -20,7 +20,7 @@ document.getElementById('submitBtn').addEventListener("click", () => {
     fetchAsync(feature.value, state.value, city.value)
     .then(data => {
         // console.log(data);
-        if (feature.value === "forecast") {
+        if (feature.value === "forecast" || feature.value === "forecast10day") {
             let forecastDay = data.forecast.simpleforecast.forecastday;
             dataTable.innerHTML = `
             <tr>
@@ -89,10 +89,7 @@ document.getElementById('submitBtn').addEventListener("click", () => {
         } 
         else if (feature.value === "yesterday") {
             alert(`${feature.value} exists, but doesn't yet work!`);
-        } 
-        else if (feature.value === "forecast10day") {
-            alert(`${feature.value} exists, but doesn't yet work!`);
-        } 
+        }
         else {
             alert(`${feature.value} is not found!`);
             return;
