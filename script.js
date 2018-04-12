@@ -24,10 +24,10 @@ document.getElementById('submitBtn').addEventListener("click", () => {
             let forecastDay = data.forecast.simpleforecast.forecastday;
             dataTable.innerHTML = `
             <tr>
-                <th>Day</th>
-                <th>High</th>
-                <th>Low</th>
-                <th>Conditions</th>
+                <th> Day </th>
+                <th> High </th>
+                <th> Low </th>
+                <th> Conditions </th>
             </tr>
             `;
             for (let i = 0; i < forecastDay.length; i++) {
@@ -43,7 +43,6 @@ document.getElementById('submitBtn').addEventListener("click", () => {
             }
         }
         else if (feature.value === "conditions") {
-            //alert(`${feature.value} exists, but doesn't yet work!`);
             let forecastDay = data.current_observation;
             dataTable.innerHTML = `
                 <tr>
@@ -60,15 +59,33 @@ document.getElementById('submitBtn').addEventListener("click", () => {
                     <td>${forecastDay.feelslike_f} F</td>
                     <td>${forecastDay.weather}</td>
                     <td>${forecastDay.relative_humidity}</td>
-                    <td>${forecastDay.visibility_mi} Mile(s)</td>
+                    <td>${forecastDay.visibility_mi} mile(s)</td>
                 </tr>
             `;
         } 
         else if (feature.value === "hourly") {
-            alert(`${feature.value} exists, but doesn't yet work!`);
-        } 
-        else if (feature.value === "hourly10day") {
-            alert(`${feature.value} exists, but doesn't yet work!`);
+            //alert(`${feature.value} exists, but doesn't yet work!`);
+            let forecastDay = data.hourly_forecast;
+            dataTable.innerHTML = `
+            <tr>
+                <th> Time </th>
+                <th> Temperature </th>
+                <th> Feels Like </th>
+                <th> Weather Condition </th>
+                <th> Humidity </th>
+            </tr>
+            `;
+            for (let i = 0; i < forecastDay.length; i++) {
+                dataTable.innerHTML += `
+                    <tr>
+                        <td> ${forecastDay[i].FCTTIME.civil}, ${forecastDay[i].FCTTIME.month_name} ${forecastDay[i].FCTTIME.mday}, ${forecastDay[i].FCTTIME.year} </td>
+                        <td> ${forecastDay[i].temp.english} F</td>
+                        <td> ${forecastDay[i].feelslike.english} F</td>
+                        <td> ${forecastDay[i].condition}</td>
+                        <td> ${forecastDay[i].humidity}%</td>
+                    </tr>
+                `;
+            }
         } 
         else if (feature.value === "yesterday") {
             alert(`${feature.value} exists, but doesn't yet work!`);
