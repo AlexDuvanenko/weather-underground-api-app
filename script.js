@@ -21,9 +21,15 @@ document.getElementById('submitBtn').addEventListener("click", () => {
     .then(data => {
         // console.log(data);
         if (feature.value === "forecast") {
-            // console.log(`The feature is in fact ${feature.value}!`);
-
             let forecastDay = data.forecast.simpleforecast.forecastday;
+            dataTable.innerHTML = `
+            <tr>
+                <th>Day</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Conditions</th>
+            </tr>
+            `;
             for (let i = 0; i < forecastDay.length; i++) {
                 //dataField.innerHTML = forecastDay[i].conditions;
                 dataTable.innerHTML += `
@@ -36,8 +42,27 @@ document.getElementById('submitBtn').addEventListener("click", () => {
                 `;
             }
         }
-        if (feature.value === "conditions") {
-            alert(`${feature.value} exists, but doesn't yet work!`);
+        else if (feature.value === "conditions") {
+            //alert(`${feature.value} exists, but doesn't yet work!`);
+            let forecastDay = data.current_observation;
+            dataTable.innerHTML = `
+                <tr>
+                    <th> Location </th>
+                    <th> Current Temperature </th>
+                    <th> Feels Like </th>
+                    <th> Weather Condition </th>
+                    <th> Humidity </th>
+                    <th> Visibility </th>
+                </tr>
+                <tr>
+                    <td>${forecastDay.display_location.city}, ${forecastDay.display_location.state}</td>
+                    <td>${forecastDay.temp_f} F</td>
+                    <td>${forecastDay.feelslike_f} F</td>
+                    <td>${forecastDay.weather}</td>
+                    <td>${forecastDay.relative_humidity}</td>
+                    <td>${forecastDay.visibility_mi} Mile(s)</td>
+                </tr>
+            `;
         } 
         else if (feature.value === "hourly") {
             alert(`${feature.value} exists, but doesn't yet work!`);
@@ -59,5 +84,5 @@ document.getElementById('submitBtn').addEventListener("click", () => {
     .catch(reason => console.log(reason.message));
 
     // let forecastData = JSON.parse(data);
-    // console.log(data);
+    //console.log(data);
 });
